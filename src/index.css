@@ -1,0 +1,256 @@
+body, html {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  height: 100vh;
+  padding: 0;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.note {
+  background-color: #fef68a;
+  border-radius: 10px;
+  padding: 1rem;
+  min-height: 170px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  white-space: pre-wrap;
+  overflow-y: auto;
+  overflow-x: visible;
+  word-wrap: break-word;
+}
+
+.note-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.notes-list {
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.container {
+  max-width: 960px;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.note.new {
+  background-color: #67d7cc;
+}
+
+textarea {
+  border: none;
+  resize: none;
+  background-color: #67d7cc;
+}
+
+textarea:focus {
+  outline: none;
+}
+
+.save {
+  background-color: #e1e1e1;
+  border: none;
+  border-radius: 15px;
+  padding: 5px 10px 5px 10px;
+}
+.save:hover {
+  background-color: #ededed;
+  cursor: pointer;
+}
+
+.delete-icon:hover {
+  cursor: pointer;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  background-color: rgb(233, 233, 233);
+  border-radius: 10px;
+  padding: 5px;
+  margin-bottom: 1.5em;
+}
+
+.search input {
+  border: none;
+  background-color: rgb(233, 233, 233);
+  width: 100%;
+}
+
+.search input:focus {
+  outline: none;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dark-mode {
+  background-color: black;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+}
+
+.dark-mode h1 {
+  color: white;
+}
+
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 30px;
+  cursor: pointer;
+  border-radius: 30px;
+}
+
+.toggle-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+
+.toggle-label {
+  position: relative;
+  display: block;
+  height: inherit;
+  font-size: 12px;
+  background: #fce9b1;
+  border-radius: inherit;
+}
+.toggle-label:before,
+.toggle-label:after {
+  position: absolute;
+  top: 50%;
+  color: black;
+  margin-top: -.5em;
+  line-height: 1;
+}
+.toggle-label:before {
+  content: attr(data-off);
+  right: 11px;
+  color: #fff;
+  text-shadow: 0 1px rgba(255, 255, 255, 0.5);
+}
+.toggle-label:after {
+  content: attr(data-on);
+  left: 11px;
+  color: #fff;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+}
+.toggle-input:checked~.toggle-label {
+  background: #092e40;
+}
+.toggle-input:checked~.toggle-label:before {
+  opacity: 0;
+}
+.toggle-input:checked~.toggle-label:after {
+  opacity: 1;
+}
+.toggle-handle {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 40px;
+  height: 30px;
+  background: #f2c03a; /* linear-gradient(to bottom, #FFFFFF 40%, #f0f0f0); */
+  border-radius: 30px;
+  cursor: pointer;
+}
+.toggle-handle:before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -6px 0 0 -6px;
+  width: 40px;
+  height: 30px;
+}
+.toggle-input:checked~.toggle-handle {
+  background: #25afee;
+  left: 21px;
+  box-shadow: -1px 1px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Transition*/
+.toggle-label,
+.toggle-handle {
+  transition: All 0.3s ease;
+  -webkit-transition: All 0.3s ease;
+  -moz-transition: All 0.3s ease;
+  -o-transition: All 0.3s ease;
+}
+
+.toggle-icon {
+  display: inline-block;
+  align-items: center;
+  justify-content: center;
+  width: 20px; /* Adjust icon width as needed */
+  height: 20px; /* Adjust icon height as needed */
+  background-image: url(/icons/brightness.png); /* Replace with your icon image URL */
+  background-size: cover;
+  background-position: center;
+  margin-top: 5px;
+  margin-left: 10px;
+}
+
+.toggle-icon:hover {
+  transition: background-image 0.3s ease; /* Transition only for background-image */
+
+  /* Rotate the icon when the toggle is checked using animation */
+  /* animation: flipIcon 0.3s ease; Apply the animation */
+  /* animation-fill-mode: forwards; */
+}
+.toggle-input:checked ~ .toggle-handle:hover .toggle-icon {
+  background-image: url(/icons/moon.png); /* Replace with checked icon image URL */
+  transition: background-image 0.3s ease; /* Transition only for background-image */
+  animation: flipIcon 0.3s ease; /* Apply the animation */
+  animation-fill-mode: forwards;
+}
+
+.toggle-input ~ .toggle-handle:hover .toggle-icon{
+  /* transition: background-image 1s ease; Transition only for background-image */
+
+  /* Rotate the icon when the toggle is checked using animation */
+  animation: flipIcon 0.3s ease; /* Apply the animation */
+  animation-fill-mode: forwards;
+}
+@keyframes flipIcon {
+  from {
+    /* transform: rotateY(0); Start rotation from 0 degrees */
+    background-image: url(/icons/brightness.png)
+  }
+  to {
+    /* transform: rotateY(180deg); Rotate to 180 degrees */
+    background-image: url(/icons/moon.png)
+  }
+}
+@keyframes flipIcon2 {
+  from {
+    /* transform: rotateY(0); Start rotation from 0 degrees */
+    background-image: url(/icons/moon.png)
+  }
+  to {
+    /* transform: rotateY(180deg); Rotate to 180 degrees */
+    background-image: url(/icons/brightness.png)
+  }
+}
