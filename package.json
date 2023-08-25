@@ -43,5 +43,14 @@
   },
   "devDependencies": {
     "gh-pages": "^6.0.0"
+  },
+  "homepage": "https://sumnsengupta.github.io/Notes-App",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sumnsengupta/Notes-App.git"
+  },
+  "author": {
+    "name": "sumnsengupta",
+    "url": "https://github.com/sumnsengupta"
   }
 }
