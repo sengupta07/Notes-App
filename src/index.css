@@ -26,6 +26,7 @@ code {
   overflow-y: auto;
   overflow-x: visible;
   word-wrap: break-word;
+  font-family: "Poppins", sans-serif;
 }
 
 .note-footer {
@@ -68,6 +69,7 @@ textarea:focus {
   border-radius: 15px;
   padding: 5px 10px 5px 10px;
 }
+
 .save:hover {
   background-color: #ededed;
   cursor: pointer;
@@ -84,6 +86,7 @@ textarea:focus {
   border-radius: 10px;
   padding: 5px;
   margin-bottom: 1.5em;
+  font-family: "Poppins", sans-serif;
 }
 
 .search input {
@@ -173,7 +176,7 @@ textarea:focus {
   left: 0px;
   width: 40px;
   height: 30px;
-  background: #f2c03a; /* linear-gradient(to bottom, #FFFFFF 40%, #f0f0f0); */
+  background: #25afee; /* linear-gradient(to bottom, #FFFFFF 40%, #f0f0f0); */
   border-radius: 30px;
   cursor: pointer;
 }
@@ -186,9 +189,12 @@ textarea:focus {
   height: 30px;
 }
 .toggle-input:checked~.toggle-handle {
-  background: #25afee;
+  background: #f2c03a;
   left: 21px;
   box-shadow: -1px 1px 5px rgba(0, 0, 0, 0.2);
+}
+.toggle-input:checked~.toggle-handle .toggle-icon {
+  background-image: url(/icons/brightness.png);
 }
 
 /* Transition*/
@@ -206,51 +212,248 @@ textarea:focus {
   justify-content: center;
   width: 20px; /* Adjust icon width as needed */
   height: 20px; /* Adjust icon height as needed */
-  background-image: url(/icons/brightness.png); /* Replace with your icon image URL */
+  background-image: url(/icons/moon.png); /* Replace with your icon image URL */
   background-size: cover;
   background-position: center;
   margin-top: 5px;
   margin-left: 10px;
 }
 
-.toggle-icon:hover {
-  transition: background-image 0.3s ease; /* Transition only for background-image */
+:root {
+  --clr-1: #00c2ff;
+  --clr-2: #33ff8c;
+  --clr-3: #ffc640;
+  --clr-4: #e54cff;
 
-  /* Rotate the icon when the toggle is checked using animation */
-  /* animation: flipIcon 0.3s ease; Apply the animation */
-  /* animation-fill-mode: forwards; */
-}
-.toggle-input:checked ~ .toggle-handle:hover .toggle-icon {
-  background-image: url(/icons/moon.png); /* Replace with checked icon image URL */
-  transition: background-image 0.3s ease; /* Transition only for background-image */
-  animation: flipIcon 0.3s ease; /* Apply the animation */
-  animation-fill-mode: forwards;
+  --blur: 1rem;
+  --fs: clamp(3rem, 8vw, 7rem);
+  --ls: clamp(-1.75px, -0.25vw, -3.5px);
 }
 
-.toggle-input ~ .toggle-handle:hover .toggle-icon{
-  /* transition: background-image 1s ease; Transition only for background-image */
-
-  /* Rotate the icon when the toggle is checked using animation */
-  animation: flipIcon 0.3s ease; /* Apply the animation */
-  animation-fill-mode: forwards;
+body {
+  font-family: "Inter", "DM Sans", Arial, sans-serif;
 }
+
+.content {
+  text-align: center;
+}
+
+.title {
+  font-size: var(--fs);
+  font-weight: 800;
+  letter-spacing: var(--ls);
+  position: relative;
+  overflow: hidden;
+  background: var(--bg);
+  margin: 0;
+}
+
+*,
+*::before,
+*::after {
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+/* .aurora-effect {
+  overflow: hidden;
+  position: absolute;
+  width: 60vw;
+  height: 60vw;
+  background-color: var(--clr-1);
+  border-radius: 37% 29% 27% 27% / 28% 25% 41% 37%;
+  filter: blur(var(--blur));
+  mix-blend-mode: overlay;
+  animation: aurora-border 6s ease-in-out infinite,
+    aurora-1 12s ease-in-out infinite alternate;
+  top: -50%;
+  left: 0;
+} */
+
+.aurora {
+  opacity: 0;
+}
+.dark-mode .aurora  {
+  opacity: 1;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+
+.aurora__item {
+  overflow: hidden;
+  position: absolute;
+  width: 60vw;
+  height: 60vw;
+  background-color: var(--clr-1);
+  border-radius: 37% 29% 27% 27% / 28% 25% 41% 37%;
+  filter: blur(var(--blur));
+  mix-blend-mode: overlay;
+}
+
+.aurora__item:nth-of-type(1) {
+  top: -50%;
+  animation: aurora-border 6s ease-in-out infinite,
+    aurora-1 12s ease-in-out infinite alternate;
+}
+
+.aurora__item:nth-of-type(2) {
+  background-color: var(--clr-3);
+  right: 0;
+  top: 0;
+  animation: aurora-border 6s ease-in-out infinite,
+    aurora-2 12s ease-in-out infinite alternate;
+}
+
+.aurora__item:nth-of-type(3) {
+  background-color: var(--clr-2);
+  left: 0;
+  bottom: 0;
+  animation: aurora-border 6s ease-in-out infinite,
+    aurora-3 8s ease-in-out infinite alternate;
+}
+
+.aurora__item:nth-of-type(4) {
+  background-color: var(--clr-4);
+  right: 0;
+  bottom: -50%;
+  animation: aurora-border 6s ease-in-out infinite,
+    aurora-4 24s ease-in-out infinite alternate;
+}
+
+@keyframes aurora-1 {
+  0% {
+    top: 0;
+    right: 0;
+  }
+
+  50% {
+    top: 100%;
+    right: 75%;
+  }
+
+  75% {
+    top: 100%;
+    right: 25%;
+  }
+
+  100% {
+    top: 0;
+    right: 0;
+  }
+}
+
+@keyframes aurora-2 {
+  0% {
+    top: -50%;
+    left: 0%;
+  }
+
+  60% {
+    top: 100%;
+    left: 75%;
+  }
+
+  85% {
+    top: 100%;
+    left: 25%;
+  }
+
+  100% {
+    top: -50%;
+    left: 0%;
+  }
+}
+
+@keyframes aurora-3 {
+  0% {
+    bottom: 0;
+    left: 0;
+  }
+
+  40% {
+    bottom: 100%;
+    left: 75%;
+  }
+
+  65% {
+    bottom: 40%;
+    left: 50%;
+  }
+
+  100% {
+    bottom: 0;
+    left: 0;
+  }
+}
+
+@keyframes aurora-4 {
+  0% {
+    bottom: -50%;
+    right: 0;
+  }
+
+  50% {
+    bottom: 0%;
+    right: 40%;
+  }
+
+  90% {
+    bottom: 50%;
+    right: 25%;
+  }
+
+  100% {
+    bottom: -50%;
+    right: 0;
+  }
+}
+
+@keyframes aurora-border {
+  0% {
+    border-radius: 37% 29% 27% 27% / 28% 25% 41% 37%;
+  }
+
+  25% {
+    border-radius: 47% 29% 39% 49% / 61% 19% 66% 26%;
+  }
+
+  50% {
+    border-radius: 57% 23% 47% 72% / 63% 17% 66% 33%;
+  }
+
+  75% {
+    border-radius: 28% 49% 29% 100% / 93% 20% 64% 25%;
+  }
+
+  100% {
+    border-radius: 37% 29% 27% 27% / 28% 25% 41% 37%;
+  }
+}
+
 @keyframes flipIcon {
   from {
     /* transform: rotateY(0); Start rotation from 0 degrees */
-    background-image: url(/icons/brightness.png)
+    background-image: url(/icons/moon.png)
   }
   to {
     /* transform: rotateY(180deg); Rotate to 180 degrees */
-    background-image: url(/icons/moon.png)
+    background-image: url(/icons/brightness.png)
   }
 }
 @keyframes flipIcon2 {
   from {
     /* transform: rotateY(0); Start rotation from 0 degrees */
-    background-image: url(/icons/moon.png)
+    background-image: url(/icons/brightness.png)
   }
   to {
     /* transform: rotateY(180deg); Rotate to 180 degrees */
-    background-image: url(/icons/brightness.png)
+    background-image: url(/icons/moon.png)
   }
 }
