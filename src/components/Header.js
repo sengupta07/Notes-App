@@ -5,7 +5,17 @@ const Header = ({ handleToggleDarkMode, darkMode }) => {
   return (
     <div className="header">
       <div className="header-title">
-        <h1>Notes</h1>
+        <div className='aurora-container'>
+        <h1 className="title">Notes
+          <div className="aurora">
+            <div className="aurora__item"></div>
+            <div className="aurora__item"></div>
+            <div className="aurora__item"></div>
+            <div className="aurora__item"></div>
+          </div>
+        </h1>
+        <div className="aurora-effect"></div>
+        </div>
       </div>
       <div className="toggle-container" >
         <label className="toggle-switch">
