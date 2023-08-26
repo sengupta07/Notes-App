@@ -44,7 +44,7 @@
   "devDependencies": {
     "gh-pages": "^6.0.0"
   },
-  "homepage": "https://sumnsengupta.github.io/Notes-App",
+  "homepage": "https://notes-app-two-rho.vercel.app/",
   "repository": {
     "type": "git",
     "url": "https://github.com/sumnsengupta/Notes-App.git"
