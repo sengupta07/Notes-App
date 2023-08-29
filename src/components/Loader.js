@@ -1,6 +1,5 @@
 import React from 'react';
 import './Loader.css';
-import gsap from 'gsap';
 const Loader = () => {
     return (
       <div className="loader-container">
