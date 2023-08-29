@@ -3,8 +3,17 @@ import { nanoid } from "nanoid";
 import NotesList from "./components/NotesList";
 import Search from "./components/Search";
 import Header from "./components/Header";
+import Loader from "./components/Loader";
 const App = () => {
   
+    const [loading, setLoading] = useState(true);
+  
+    // Simulate loading for demonstration purposes
+    useEffect(() => {
+      setTimeout(() => {
+        setLoading(false);
+      }, 3000);
+    }, []);
   const [notes, setNotes] = useState(() => {
       const savedNotes = JSON.parse(localStorage.getItem('react-notes-app-data'));
       return savedNotes ? savedNotes : [];
@@ -74,6 +83,9 @@ const App = () => {
 
   return (
       <div className={`App ${darkMode && 'dark-mode'}`}>
+        {loading ? (
+          <Loader />
+        ) : (
         <html>
           <div className="container">
             <Header handleToggleDarkMode={setDarkMode} />
@@ -85,6 +97,7 @@ const App = () => {
             />
           </div>
         </html>
+        )};
       </div>
     
     
